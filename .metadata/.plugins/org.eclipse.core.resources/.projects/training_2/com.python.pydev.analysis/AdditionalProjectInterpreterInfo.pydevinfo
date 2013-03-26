@@ -1,0 +1,21 @@
+-- VERSION_3
+-- START DISKCACHE
+/home/fernando/workspace/training_F1/.metadata/.plugins/org.eclipse.core.resources/.projects/training_2/com.python.pydev.analysis/v1_indexcache
+.v1_indexcache
+Main|0|/home/fernando/workspace/training_F1/training_2/src/Main.py
+-- END DISKCACHE
+-- START DICTIONARY
+1
+1=Main
+-- END DICTIONARY
+-- START TREE 1
+5
+dic|1|diccionario_de_patente!11@
+h_p|1|h_par!11@
+i|1|i!11@
+pat|1|patente!11@
+sum|2|suma_digito_par!11@suma_digito_impar!11@
+-- END TREE
+-- START TREE 2
+0
+-- END TREE
