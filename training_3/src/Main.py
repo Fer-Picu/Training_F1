@@ -8,22 +8,16 @@ import tkMessageBox
 i = 0
 
 
-class Modelo_Boton_1():
-    def __init__(self):
+class Modelo_Boton():
+    def __init__(self,nombre):
         self.i = 0
-    def accion_boton_1(self):
+        self.nombre = nombre
+    def accion_boton(self):
         self.i = self.i + 1
         print self.i
         
         
-modelo_boton_1 = Modelo_Boton_1()
-
-if __name__ == '__main__':  
-    top = Tkinter.Tk()
-    boton_1 = Tkinter.Button(top, text ="Hello", command = modelo_boton_1.accion_boton_1)
-    boton_1.pack()
-    top.mainloop()
-
+modelo_boton_1 = Modelo_Boton('boton_1')
 
 diccionario_letras = {'2':'a', '22':'b', '222':'c',\
                       '3':'d', '33':'e', '333':'f',\
@@ -36,3 +30,8 @@ diccionario_letras = {'2':'a', '22':'b', '222':'c',\
                       }
 
 
+if __name__ == '__main__':  
+    top = Tkinter.Tk()
+    boton_1 = Tkinter.Button(top, text ="Hello", command = modelo_boton_1.accion_boton_1)
+    boton_1.pack()
+    top.mainloop()
