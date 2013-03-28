@@ -3,15 +3,18 @@ Created on 26/03/2013
 
 @author: fernando
 '''
-from gestor_de_escritura.Gestor_De_Escritura import imasd
 
-class Modelo_Boton():
-    id = ''
-    def __init__(self,nombre):
-        id = nombre
-        
+
+from Tkinter import *
+
+root = Tk()
+class Modelo_Boton(Button):
+
     def accion_boton(self):
-        return id
-    
-    
-    
+        print id
+
+    def __init__(self, id):
+        self.id = id
+        Button.__init__(self, root, command = self.accion_boton())
+    if __name__ == "__main__":
+        __init__()
