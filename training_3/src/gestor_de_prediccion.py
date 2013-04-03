@@ -21,7 +21,6 @@ class Gestor():
                          'escribo', 'aviso', 'que', 'veces', 'burundanga',
                          'hey'
                          ]
-        self.lista_posibilidades = []
         self.make_diccionario_claves()
 
     def get_clave_palabra(self, string):
@@ -47,6 +46,7 @@ class Gestor():
                                 self.get_clave_palabra(cada_item)
 
     def buscar_opciones(self, palabra):
+        self.lista_posibilidades = []
         clave_palabra_escribiendo = self.get_clave_palabra(palabra)
         for tupla in self.diccionario_claves_de_palabras.items():
             if tupla[1].split(clave_palabra_escribiendo)[0] == '':

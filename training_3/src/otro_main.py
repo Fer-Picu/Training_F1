@@ -3,17 +3,20 @@ from modelo_boton import Modelo_Boton
 #import gestor_de_prediccion
 #from gestor_de_prediccion import Gestor
 #from gestor_de_prediccion import Gestor
+from Tkinter import *
 
-mi_gestor = Gestor()
-lista_botones = []
+def onclick():
+   pass
 
+root = Tk()
+text = Text(root)
+text.insert(INSERT, "Hello.....")
+text.insert(END, "Bye Bye.....")
+text.pack()
 
-def main():
-    print mi_gestor.buscar_opciones('h')
-    for i in range(11):
-        lista_botones.append(Modelo_Boton())
-        lista_botones[i].id = i
-    for boton in lista_botones:
-        print boton.id
-if __name__ == "__main__":
-    main()
+text.tag_add("here", "1.0", "1.4")
+text.tag_add("start", "1.8", "1.13")
+
+text.tag_config("here", background="yellow", foreground="blue")
+text.tag_config("start", background="black", foreground="green")
+root.mainloop()
