@@ -1,5 +1,6 @@
 class Gestor():
     def __init__(self):
+        self.diccionario_claves_de_palabras_personales = {}
         self.clave_palabra = ''
         self.diccionario_claves_de_palabras = {}
         self.diccionario_de_botones = {\
@@ -45,10 +46,21 @@ class Gestor():
             self.diccionario_claves_de_palabras[cada_item] = \
                                 self.get_clave_palabra(cada_item)
 
+    def agregar_palabra(self, palabra):
+        self.diccionario_claves_de_palabras_personales[palabra] = \
+                                    self.get_clave_palabra(palabra)
+
     def buscar_opciones(self, palabra):
         self.lista_posibilidades = []
         clave_palabra_escribiendo = self.get_clave_palabra(palabra)
         for tupla in self.diccionario_claves_de_palabras.items():
             if tupla[1].split(clave_palabra_escribiendo)[0] == '':
                 self.lista_posibilidades.append(tupla[0])
-        return self.lista_posibilidades
+            """
+            CHEQUEAR FUCIONAMIENTO
+            """
+        if self.diccionario_claves_de_palabras_personales != {}:
+            for tupla_2 in self.diccionario_claves_de_palabras_personales.items():
+                if tupla_2[1].split(clave_palabra_escribiendo)[0] == '':
+                    self.lista_posibilidades.append(tupla_2[0])
+        return self.lista_posibilidades 
