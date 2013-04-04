@@ -9,7 +9,7 @@ from gestor_de_prediccion import Gestor
 
 mi_gestor = Gestor()
 texto_1 = Text()
-texto_1.config(width=60, height=15)
+texto_1.config(width=30, height=6)
 texto_1.pack()
 texto_2 = Text()
 texto_2.pack()
@@ -43,8 +43,8 @@ class Gestor_De_Escritura():
         try:
             texto_1.insert(INSERT, self.mis_opciones[self.seleccion])
         except:
-            pass
-        self.fin_palabra = texto_1.index(CURRENT)
+            print "error cambiar opcion"
+        self.fin_palabra = texto_1.index(INSERT)
         print 'despues'
         print self.principio_palabra, ' fin: ', self.fin_palabra
 
@@ -82,7 +82,6 @@ class Gestor_De_Escritura():
         self.nueva_palabra_incompleta = True
         texto_2.delete(1.0, END)
         texto_2.insert(INSERT, 'AGREGANDO PALABRA: \n ')
-        pass
 
     def terminar_de_agregar_palabra(self):
         self.palabra_a_agregar = texto_2.get('2.1', INSERT)
@@ -115,13 +114,13 @@ class Gestor_De_Escritura():
         self.anterior_boton = boton
 
     def borrar(self, text):
-        indice_texto = text.index(INSERT)
-        lista = indice_texto.split('.')
-        lista[1] = str(int(lista[1]) - 1)
-        indice_texto = lista[0] + '.' + lista[1]
-        text.delete(indice_texto, INSERT)
-        string = str(text.get('1.0', END))
         if text == texto_1:
+            indice_texto = text.index(INSERT)
+            lista = indice_texto.split('.')
+            lista[1] = str(int(lista[1]) - 1)
+            indice_texto = lista[0] + '.' + lista[1]
+            text.delete(indice_texto, INSERT)
+            string = str(text.get('1.0', END))
             if string.endswith(' '):
                 self.linea = ''
             else:
@@ -132,6 +131,14 @@ class Gestor_De_Escritura():
                 self.principio_palabra = nuevo_comienzo
                 self.fin_palabra = text.index(INSERT)
                 self.linea = text.get(self.principio_palabra, self.fin_palabra)
+        else:
+            if str(text.index(INSERT)) != "2.1":
+                print text.index(INSERT)
+                indice_texto = text.index(INSERT)
+                lista = indice_texto.split('.')
+                lista[1] = str(int(lista[1]) - 1)
+                indice_texto = lista[0] + '.' + lista[1]
+                text.delete(indice_texto, INSERT)
 
     def traer_caracter(self, boton):
         for tupla in self.diccionario_letras.items():
@@ -189,22 +196,15 @@ class Interprete_Boton():
         if comando == "left":
             pass
         if comando == "down":
-            gestor_de_escritura.seleccion = gestor_de_escritura.seleccion\
-                                             + 1
-            try:
-                gestor_de_escritura.cambiar_opcion()
-            except:
-                gestor_de_escritura.seleccion = 0
-                gestor_de_escritura.cambiar_opcion()
+            gestor_de_escritura.seleccion =\
+                                        (gestor_de_escritura.seleccion + 1)\
+                                     % len(gestor_de_escritura.mis_opciones)
+            gestor_de_escritura.cambiar_opcion()
         if comando == "up":
-
-            gestor_de_escritura.seleccion = gestor_de_escritura.seleccion\
-                                         - 1
-            try:
-                gestor_de_escritura.cambiar_opcion()
-            except:
-                gestor_de_escritura.seleccion = 0
-                gestor_de_escritura.cambiar_opcion()
+            gestor_de_escritura.seleccion =\
+                                    (gestor_de_escritura.seleccion - 1)\
+                                     % len(gestor_de_escritura.mis_opciones)
+            gestor_de_escritura.cambiar_opcion()
 
     def __init__(self):
         self.flag_ok = False
@@ -232,4 +232,3 @@ if __name__ == '__main__':
     crear_boton('ok', top)
     crear_boton('#', top)
     top.mainloop()
-
