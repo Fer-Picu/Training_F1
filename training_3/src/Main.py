@@ -9,7 +9,7 @@ from gestor_de_prediccion import Gestor
 
 mi_gestor = Gestor()
 texto_1 = Text()
-texto_1.config(width=30, height=6)
+texto_1.config(width=15, height=6)
 texto_1.pack()
 texto_2 = Text()
 texto_2.pack()
