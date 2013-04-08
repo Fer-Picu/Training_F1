@@ -24,6 +24,8 @@ class Caballo(object):
     def set_posicion(self, pos_aux):
         if self.validar_movimiento(pos_aux) == 'nok':
             print 'error de seteo de posicion caballeristica'
+        else:
+            self.posicion = pos_aux
 
     def get_posicion(self):
         return self.posicion[:]
@@ -79,6 +81,8 @@ class Caballo(object):
             self.disminuir_y_en_2()
             self.disminuir_x_en_1()
         if self.validar_movimiento(self.posicion) == 'nok':
+#             print 'posicion_erronea :', self.get_posicion()
+            self.posicion = self.posicion_anterior[:]
             return 0
         else:
             return 1
