@@ -46,7 +46,7 @@ class Tablero():
 #                 self.lista_celdas_marcadas.append(celda)
 
     def get_celda(self, n):
-        return self.__lista_celdas[n]
+        return self._lista_celdas[n]
 
     def __init__(self):
         '''

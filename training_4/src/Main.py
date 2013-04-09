@@ -9,8 +9,13 @@ from Jugador import Jugador
 
 def main():
     chaboncito = Jugador()
-    chaboncito.calcular_movimientos()
-    for cada_clave in chaboncito.diccionario.iteritems():
-        print 'casillero: ',cada_clave[0], 'posibles = ', cada_clave[1] 
+    chaboncito.jugar()
+    print chaboncito.pony.posicion
+    i = 0
+    while i < len(chaboncito.machetes_lista):
+        for x in chaboncito.machetes_lista[i].lista_de_accesos:
+            if x == [7, 7]:
+                print 'esta celda: ', chaboncito.machetes_lista[i].id
+        i += 1
 if __name__ == '__main__':
     main()
