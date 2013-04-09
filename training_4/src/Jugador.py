@@ -9,6 +9,7 @@ from Tablero import Tablero
 from Caballo import Caballo
 from Machete_Celda import Machete_Celda
 from sys import exit
+import random
 
 
 class Jugador(object):
@@ -20,7 +21,7 @@ class Jugador(object):
         return self.diccionario.items()
 
     def get_jugadas(self):
-        return self.jugadas_alcanzadas
+        return self.contador_jugadas
 
     def calcular_movimientos(self):
         i = 0
@@ -44,19 +45,49 @@ class Jugador(object):
         return cantidad
 
     def terminar(self):
-        print 'JUEGO TERMINADO.. juagadas: ', self.contador_jugadas
+        print 'JUEGO TERMINADO.. jugadas: ', self.contador_jugadas
         exit()
 
     def jugar(self):
         celda = self.pasar_de_clave_a_celda(self.pony.get_posicion())
-        print celda
+        self.quitar_celda_del_mapa(celda)
         opciones_list = self.machetes_lista[celda].lista_de_accesos[:]
-        print 'posibilitis desde: ', celda, '= ', opciones_list
+        print 'posibles desde: ', celda, '= ', opciones_list
         if opciones_list == []:
             self.terminar()
-        lista_analisis = []
         for opcion in opciones_list:
-            print opcion
+            celda_opcion = self.pasar_de_clave_a_celda(opcion)
+            lis_op = self.machetes_lista[celda_opcion].lista_de_accesos
+            if len(lis_op) >= 2:
+                index_azar = random.randint(0, len(lis_op))
+
+                pass
+            elif len(lis_op) == 1:
+                pass
+            elif len(lis_op) == 2:
+                self.pony.set_posicion(opcion[:])
+        self.contador_jugadas += 1
+#         celda_destino = celda
+#         ultimo_len = 7
+#         for opcion in opciones_list:
+#             celda_opcion = self.pasar_de_clave_a_celda(opcion)
+#             len_opcion = len(self.machetes_lista[celda_opcion].lista_de_accesos)
+#             if  len_opcion >= 2:
+# #                 if len_opcion < ultimo_len:
+#                     celda_destino = celda_opcion
+# #                     ultimo_len = len_opcion
+#         casilla_a_mover = self.pasar_de_celda_a_clave(celda_destino)
+#         print 'ELIJIO: ', casilla_a_mover
+#         self.pony.set_posicion(casilla_a_mover)
+#         self.contador_jugadas += 1
+        
+        
+        
+        
+#             list_option_in_celda_option = self.machetes_lista[celda_opcion].lista_de_accesos[:]
+#             for futura_opcion in  list_option_in_celda_option:
+#                 celda_futura = self.pasar_de_clave_a_celda(futura_opcion)
+#                 lista_analisis.append(celda_futura)
 
     def pasar_de_clave_a_celda(self, clave):
         celda = clave[1] * 8 + clave[0]
@@ -85,7 +116,7 @@ class Jugador(object):
         while i < len_accesos_celda_a_borrar:
             clave_opcion = self.machetes_lista[celda].lista_de_accesos[i]
             celda_opcion = self.pasar_de_clave_a_celda(clave_opcion)
-            self.machetes_lista[celda_opcion].
+            self.machetes_lista[celda_opcion].bajar_cantidad_de_accesos(clave_celda_erase)
 #             j = 0
 #             while j < len(self.machetes_lista[celda_opcion].lista_de_accesos):
 #                 list_aux =\
@@ -109,6 +140,4 @@ class Jugador(object):
         self.machetes_lista = []
         self.calcular_movimientos()
         self.crear_lista_de_machetes()
-        self.quitar_celda_del_mapa(63)
-        self.quitar_celda_del_mapa(46)
-        self.quitar_celda_del_mapa(53)
+

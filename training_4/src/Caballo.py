@@ -23,9 +23,9 @@ class Caballo(object):
 
     def set_posicion(self, pos_aux):
         if self.validar_movimiento(pos_aux) == 'nok':
-            print 'error de seteo de posicion caballeristica'
+            return True
         else:
-            self.posicion = pos_aux
+            return False
 
     def get_posicion(self):
         return self.posicion[:]
