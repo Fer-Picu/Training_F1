@@ -15,12 +15,12 @@ def convertir_int_to_list(i):
 
 
 def establecer_prefijo(genero, dni, tipo_de_registro):
-    if tipo_de_registro == 'CUIL':
-        if genero == 'HOMBRE':
+    if tipo_de_registro == 'cuil':
+        if genero == 'h':
             prefijo = 20
         else:
             prefijo = 27
-    elif tipo_de_registro == 'CUIT':
+    elif tipo_de_registro == 'cuit':
         prefijo = 30
     dni_con_prefijo = 100000000 * prefijo + int(dni)
     return dni_con_prefijo

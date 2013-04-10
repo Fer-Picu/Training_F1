@@ -58,8 +58,9 @@ class Jugador(object):
             celda_opcion = self.pasar_de_clave_a_celda(opcion)
             lis_op = self.machetes_lista[celda_opcion].lista_de_accesos
             if len(lis_op) > 1:
-                index_azar = random.randint(0, (len(opciones_list) - 1))
-                self.pony.posicion = opciones_list[index_azar][:]
+                list_prioridad.append(opcion[:])
+#                 index_azar = random.randint(0, (len(opciones_list) - 1))
+#                 self.pony.posicion = opciones_list[index_azar][:]
                 pass
             elif len(lis_op) == 0:
                 pass
@@ -67,6 +68,8 @@ class Jugador(object):
                 self.pony.posicion = opcion[:]
         if opciones_list == []:
             self.terminar()
+        
+            
         self.contador_jugadas += 1
 #         celda_destino = celda
 #         ultimo_len = 7

@@ -9,15 +9,14 @@ class Formulario ():
     '''
     classdocs
     '''
-    tipo_de_tramite = ''
-    dni = 0
-    genero = ''
-
 
     def __init__(self):
         '''
         Constructor
         '''
+        self.tipo_de_tramite = ''
+        self.dni = 0
+        self.genero = ''
         pass
 
     def peticion_de_datos(self):
@@ -30,11 +29,12 @@ class Formulario ():
         while 1:
             self.genero = raw_input('HOMBRE: H\MUJER: M\n EMPRESA: E')
             self.genero = self.genero.lower()
-            if self.genero == 'h' or 'm' or 'e':
+            if self.genero[0] == 'h' or 'm' or 'e':
                 break
             print 'ingreso incorrecto'
         while 1:
-            dni = raw_input('ingrese dni')
-            if len(dni) == 8:
+            self.dni = raw_input('ingrese dni')
+            if len(self.dni) == 8:
                 break
             print 'ingreso incorrecto'
+        print self.dni 
