@@ -5,9 +5,6 @@ Created on 09/04/2013
 '''
 
 if __name__ == '__main__':
-    lista = ['d','f','h','k','i','r']
+    lista = ['d']
     for cada in lista:
-        if cada == 'k':
-            break
-        cada='sdfsf'
-    print lista
+        print lista

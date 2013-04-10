@@ -54,6 +54,6 @@ class Tablero():
         '''
         self.rango = range(8)
         self.campo = []
-        self.lista_celdas_marcadas = [[2, 1]]
+        self.lista_celdas_marcadas = []
         self._lista_celdas = []
         self.make_lista_celdas()
