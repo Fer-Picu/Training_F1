@@ -4,6 +4,17 @@ Created on 22/03/2013
 @author: fernando
 '''
 
+
+def arreglo_de_digito(numero):
+    numero = str(numero)
+    auxiliar = 0
+    for i in range(len(numero)):
+        auxiliar = auxiliar + int(numero[i])
+    numero = auxiliar
+    x = str(numero)
+    if len(x) >= 2:
+        arreglo_de_digito(int(x))
+    return numero
 if __name__ == '__main__':
     diccionario_de_patente = {'a': '14', 'b': '01', 'c': '00',\
                           'd': '16', 'e': '05', 'f': '20',\
@@ -23,15 +34,20 @@ if __name__ == '__main__':
             i = i + 1
         except:
             i = i + 1
+    patente = str(patente)
 # ACA FALTA DESARROLLAR TERMINAR DE CALCULAR EL NUMERO IDENTIFICADOR
+    i -= 1
     suma_digito_impar = 0
     suma_digito_par = 0
-    while i > 0:
-        if patente[i] % 2 != 0:
-            suma_digito_impar = patente[i] + suma_digito_impar 
+    while i >= 0:
+        if i % 2 == 0:
+            suma_digito_par = int(patente[i]) + suma_digito_par
         else:
-            h_par = 0
-            suma_digito_par = patente[i] + suma_digito_par
-            while suma_digito_par > 10:
-                while h_par < len(suma_digito_par):
-                    pass
+            suma_digito_impar = int(patente[i]) + suma_digito_impar
+        i -= 1
+    if len(str(suma_digito_impar)) >= 2:
+        suma_digito_impar = arreglo_de_digito(suma_digito_impar)
+    if len(str(suma_digito_par)) >= 2:
+        suma_digito_par = arreglo_de_digito(suma_digito_par)
+    digito_identificador = str(suma_digito_par) + str(suma_digito_impar)
+    print 'digito_identificador= ', digito_identificador
