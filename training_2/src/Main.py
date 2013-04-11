@@ -6,14 +6,11 @@ Created on 22/03/2013
 
 
 def arreglo_de_digito(numero):
-    numero = str(numero)
-    auxiliar = 0
-    for i in range(len(numero)):
-        auxiliar = auxiliar + int(numero[i])
-    numero = auxiliar
-    x = str(numero)
-    if len(x) >= 2:
-        arreglo_de_digito(int(x))
+    while len(str(numero)) >= 2:
+        auxiliar = 0
+        for i in range(len(str(numero))):
+            auxiliar = auxiliar + int(str(numero)[i])
+        numero = auxiliar
     return numero
 if __name__ == '__main__':
     diccionario_de_patente = {'a': '14', 'b': '01', 'c': '00',\
